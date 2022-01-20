@@ -1,0 +1,9 @@
+﻿  CV7OEMFR.cpp
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(16,24): error C2660: 'CV7OEMFR::splitString' : la fonction ne prend pas 2 arguments
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.h(14,7): message : voir la déclaration de 'CV7OEMFR::splitString'
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(38,35): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(42,35): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(43,42): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(48,37): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(52,37): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
+C:\Users\snir\Documents\Projet2022\Trames\Prog\LectureTrame\CV7OEMFR.cpp(53,45): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
