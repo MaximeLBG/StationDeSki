@@ -47,7 +47,7 @@ void loop(){
         u8g2->drawStr(0, 12, "Transmission: OK!"); // affichage d'une string a l'écran
         snprintf(buf, sizeof(buf), "Envoie numero: %d", counter); //permet de formater les valeurs a l'affichage
         u8g2->drawStr(0, 26, buf);
-        snprintf(buf, sizeof(buf), "Message: %d", output);
+        snprintf(buf, sizeof(buf), "Message: %s", output);
         u8g2->drawStr(0, 40, buf);
         u8g2->sendBuffer(); //permet d'envoyer la compositon a l'écran
 }
