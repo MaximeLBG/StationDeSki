@@ -2,7 +2,7 @@
 #include "boards.h"
 #include <ArduinoJson.h>
 
-char output[128];
+String output;
 int counter = 0;
 
 void setup() {
@@ -22,9 +22,9 @@ void setup() {
   
   JsonObject Capteur = doc.createNestedObject("Capteur");
   Capteur["numero"] = "1";
-  Capteur["vitesseVent"] = "10";
-  Capteur["directionVent"] = "N";
-  Capteur["temperature"] = "20";
+  Capteur["vitesseVent"] = "10.15";
+  Capteur["directionVent"] = "R";
+  Capteur["temperature"] = "20.24";
   
   serializeJson(doc, output);
 }
@@ -32,16 +32,13 @@ void setup() {
 void loop(){
   
   int i; //var de la boucle for
-    char buf[256]; //buffer pour faire apparaitre le texte
+  char buf[256]; //buffer pour faire apparaitre le texte
 
-    while(1)
-    {
-      for(i=0;i<=1;i++)//boucle pour faire clignoter la led
-      {
+
         LoRa.beginPacket(); //début de l'envoie des packets
         LoRa.print(output); //envoie du packet
         Serial.println(output); //affichage dans le moniteur série
-        LoRa.endPacket(); //fin de l'envoie des packets
+        LoRa.endPacket(); //fin de l'envoie des0 packets
         delay(1000);
         counter++;
         Serial.println(counter);//affichage dans le moniteur série du nombre d'itération
@@ -53,6 +50,4 @@ void loop(){
         snprintf(buf, sizeof(buf), "Message: %d", output);
         u8g2->drawStr(0, 40, buf);
         u8g2->sendBuffer(); //permet d'envoyer la compositon a l'écran
-      }
-    }
 }
