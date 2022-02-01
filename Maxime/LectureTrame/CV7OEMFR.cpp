@@ -28,11 +28,9 @@ void CV7OEMFR::splitString(string trame, string delim)
 	int start = 0;
 	int end = trame.find(delim);
 	int flag = 0;
-	string resultat;
 
 	while (end != -1)
 	{
-		//cout << "\t" << trame.substr(start, end - start) << endl;		Pour l'afficher ajouter "#include <iostream>"
 		start = end + delim.size();
 		end = trame.find(delim, start);
 		flag++;
@@ -43,7 +41,6 @@ void CV7OEMFR::splitString(string trame, string delim)
 			if (flag == 3)
 			{
 				Vitesse = stof(trame.substr(start, end - start));
-				//Vitesse = stof(resultat);
 			}
 		}
 
@@ -52,7 +49,6 @@ void CV7OEMFR::splitString(string trame, string delim)
 			if (flag == 2)
 			{
 				Direction = (trame.substr(start, end - start));
-				//Direction = resultat;
 			}
 		}
 	
@@ -61,9 +57,7 @@ void CV7OEMFR::splitString(string trame, string delim)
 			if (flag == 2)
 			{
 				Temperature = stof(trame.substr(start, end - start));
-				//Temperature = stof(resultat);
 			}
 		}
 	}
-	//cout << "\t" << trame.substr(start, end - start);
 }

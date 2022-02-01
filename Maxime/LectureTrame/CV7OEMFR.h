@@ -17,4 +17,3 @@ public:
 	float getTemperature();
 	string getDirection();
 };
-
