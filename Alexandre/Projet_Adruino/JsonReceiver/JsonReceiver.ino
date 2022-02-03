@@ -57,7 +57,10 @@ void loop()
           Serial.println(Capteur_directionVent);
           
           Serial.print("Temperature : ");
-          Serial.println(Capteur_temperature);       
+          Serial.println(Capteur_temperature);   
+
+          Serial.print("complet : ");
+          Serial.println(Capteur);
         
         char buf[256]; //buffer pour faire apparaitre le texte
         
