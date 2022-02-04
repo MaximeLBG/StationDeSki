@@ -5,6 +5,11 @@
 String output;
 int counter = 0;
 
+int numeroCapteur = 1;
+float vitesseVent = 10.1;
+float directionVent = 142.2;
+float temperature = 20.4;
+
 void setup() {
   
     initBoard();
@@ -21,10 +26,10 @@ void setup() {
   StaticJsonDocument<128> doc;
   
   JsonObject Capteur = doc.createNestedObject("Capteur");
-  Capteur["numero"] = "1";
-  Capteur["vitesseVent"] = "10.15";
-  Capteur["directionVent"] = "R";
-  Capteur["temperature"] = "20.24";
+  Capteur["numero"] = numeroCapteur;
+  Capteur["vitesseVent"] = vitesseVent;
+  Capteur["directionVent"] = directionVent;
+  Capteur["temperature"] = temperature;
   
   serializeJson(doc, output);
 }
@@ -47,7 +52,7 @@ void loop(){
         u8g2->drawStr(0, 12, "Transmission: OK!"); // affichage d'une string a l'écran
         snprintf(buf, sizeof(buf), "Envoie numero: %d", counter); //permet de formater les valeurs a l'affichage
         u8g2->drawStr(0, 26, buf);
-        snprintf(buf, sizeof(buf), "Message: %s", output);
+        snprintf(buf, sizeof(buf), "Message: %d", output);
         u8g2->drawStr(0, 40, buf);
         u8g2->sendBuffer(); //permet d'envoyer la compositon a l'écran
 }
