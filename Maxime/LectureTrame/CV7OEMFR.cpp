@@ -17,7 +17,7 @@ float CV7OEMFR::getTemperature()
 	splitString(Temp);
 	return this->Temperature;
 }
-string CV7OEMFR::getDirection()
+float CV7OEMFR::getDirection()
 {
 	splitString(Dir);
 	return this->Direction;
@@ -40,15 +40,15 @@ void CV7OEMFR::splitString(string trame, string delim)
 		{
 			if (flag == 3)
 			{
-				Vitesse = stof(trame.substr(start, end - start));
+				this->Vitesse = stof(trame.substr(start, end - start));
 			}
 		}
 
 		if (trame == this->Dir)
 		{
-			if (flag == 2)
+			if (flag == 1)
 			{
-				Direction = (trame.substr(start, end - start));
+				this->Direction = stof(trame.substr(start, end - start));
 			}
 		}
 	
@@ -56,7 +56,7 @@ void CV7OEMFR::splitString(string trame, string delim)
 		{
 			if (flag == 2)
 			{
-				Temperature = stof(trame.substr(start, end - start));
+				this->Temperature = stof(trame.substr(start, end - start));
 			}
 		}
 	}

@@ -1,10 +1,12 @@
 #include "CV7OEMFR.h"
+#include <Windows.h>    // Pour la commande "SetConsoleOutputCP(1256)"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
+    SetConsoleOutputCP(1256);   // Affichage des caractères spéciaux
     
     string Direction = "$IIMWV,344.0,R,005.9,M,A*31<CR><LF>";
     string Vitesse = "$IIMWV,344.0,R,005.9,M,A*31<CR><LF>";
@@ -14,11 +16,11 @@ int main()
 
     trame = new CV7OEMFR(Vitesse,Temperature,Direction);
 
-    cout << "Trame Direction : " << trame->getDirection();
+    cout << "Trame Direction : " << trame->getDirection() << " °" << endl;
 
-    cout << endl << "\nTrame Vitesse : " << trame->getVitesse();
+    cout << "\nTrame Vitesse : " << trame->getVitesse() << " m/s" << endl;
 
-    cout << endl << "\nTrame Temperature : " << trame->getTemperature() << endl;
+    cout << "\nTrame Temperature : " << trame->getTemperature() << " °C" << endl;
 
     return 0;
 }
