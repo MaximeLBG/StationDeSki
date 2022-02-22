@@ -5,8 +5,8 @@ using namespace std;
 class CV7OEMFR
 {
 private:
-	string Vit, Temp, Dir, Direction;
-	float Vitesse, Temperature;
+	string Vit, Temp, Dir;
+	float Vitesse, Temperature, Direction;
 	void splitString(string trame, string delim = ",");
 
 public:
@@ -15,5 +15,5 @@ public:
 
 	float getVitesse();
 	float getTemperature();
-	string getDirection();
+	float getDirection();
 };
