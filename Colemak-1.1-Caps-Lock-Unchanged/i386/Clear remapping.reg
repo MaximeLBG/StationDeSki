@@ -1,0 +1,7 @@
+REGEDIT4 
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout] 
+"Scancode Map"=-
+
+[HKEY_CURRENT_USER\Keyboard Layout]
+"Scancode Map"=-
