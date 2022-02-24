@@ -1,14 +1,18 @@
-#include <LoRa.h>
-#include "boards.h"
-#include <ArduinoJson.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include "boards.h"
+#include "utilities.h"
+  
+const char* ssid = "wireless_cdf";
+const char* password =  "1A2B3C4D5E";
 
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+IPAddress staticIP(192,168,1,50);
+IPAddress gateway(192, 168, 1, 254);
+IPAddress subnet(255, 255, 255, 0);
+IPAddress dns(192, 168, 1, 254);
 
 //Your Domain name with URL path or IP address with path
-const char* serverName = "http://192.168.1.106:1880/update-sensor";
+const char* serverName = "http://192.168.1.60:80/MVC/ProjetStationDeSki/step5V3/vent/new";
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
@@ -18,48 +22,59 @@ unsigned long lastTime = 0;
 // Set timer to 5 seconds (5000)
 unsigned long timerDelay = 5000;
 
-void setup() {
+void setup(){
   Serial.begin(115200);
-
-  WiFi.begin(ssid, password);
-  Serial.println("Connecting");
-  while(WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to WiFi network with IP Address: ");
-  Serial.println(WiFi.localIP());
  
-  Serial.println("Timer set to 5 seconds (timerDelay variable), it will take 5 seconds before publishing the first reading.");
-}
-
-void loop() {
-  //Send an HTTP POST request every 10 minutes
-  if ((millis() - lastTime) > timerDelay) {
-    //Check WiFi connection status
-    if(WiFi.status()== WL_CONNECTED){
-      WiFiClient client;
-      HTTPClient http;
+  if (WiFi.config(staticIP, gateway, subnet, dns, dns) == false) {
+    Serial.println("Configuration failed.");
+  }
     
-      // Your Domain name with URL path or IP address with path
-      http.begin(client, serverName);
-
-      // Specify content-type header
-      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-      
-      //envoie du json 
-      int httpResponseCode = http.POST("Hello, World!");
+  WiFi.begin(ssid, password);
+ 
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print("Connecting...\n\n");
+  }
+ 
+  Serial.print("Local IP: ");
+  Serial.println(WiFi.localIP());
+  Serial.print("Subnet Mask: ");
+  Serial.println(WiFi.subnetMask());
+  Serial.print("Gateway IP: ");
+  Serial.println(WiFi.gatewayIP());
+  Serial.print("DNS 1: ");
+  Serial.println(WiFi.dnsIP(0));
+  Serial.print("DNS 2: ");
+  Serial.println(WiFi.dnsIP(1));
+}
+    
+void loop(){
+  //Send an HTTP POST request every 10 minutes
+   Serial.println("Posting JSON data to server...");
+  // Block until we are able to connect to the WiFi access point
+  if (WiFi.status() == WL_CONNECTED) {
      
-      Serial.print("HTTP Response code: ");
-      Serial.println(httpResponseCode);
+    HTTPClient http;   
+     
+    http.begin("https://httpbin.org/anything");  
+    http.addHeader("Content-Type", "application/json");   
+
+    char json[] = "{\"hello\":\"world\"}";
         
-      // Free resources
-      http.end();
+    int httpResponseCode = http.POST(json);
+ 
+    if(httpResponseCode>0){
+       
+      String response = http.getString();                       
+       
+      Serial.println(httpResponseCode);   
+      Serial.println(response);
+     
     }
     else {
-      Serial.println("WiFi Disconnected");
+     
+      Serial.printf("Error occurred while sending HTTP POST ");
+       
     }
-    lastTime = millis();
   }
 }
