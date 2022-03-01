@@ -1,0 +1,16 @@
+;
+     mcoefn:   01      ; COEFND de eprom :coef pour transf micsec en nds        env 0AC
+     mcoeft:   01      ; COEFTP          :coef pour convertir mes temp en délai env 070
+     mretfi:   01      ; RETFIX          :retard fixe de mesure                 env 090
+     mtherm:   01      ; THERMO          :coef en x de conversion th en deg     env 098
+     mzerde:   01      ; ZERDEG          :zero deg                              env 0C5
+     format:   02      ; hexa de eeprom ascii 12 13 15 16
+                       ; forma   :cor d'angle (hexa de 12 13) init=00
+                       ; forma+1 :b10  00= en liaison PC      init=01
+                       ;               01 = nmea 183 4800
+                       ;               10 = FI50 modif mars 2008
+                       ;               11 = FI30
+                       ;          b2      = Celsius           init=0
+                       ;          b43     = nds=00 m/s=01 km/h=10   init=00   
+                       ;          b765    = const filtrage 001=2s 010=4 011=8 100=16
+                       ; init=30 30 (2C) 32 31 (00100001)

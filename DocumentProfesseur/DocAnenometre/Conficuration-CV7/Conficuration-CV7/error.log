@@ -1,0 +1,56 @@
+
+
+Error log timestamp Wednesday 13/11/19 15:18:39
+
+Runtime error: digitValue requires characters $0..$9, $A..$Z
+
+Error(Exception)>>defaultAction
+Error(Exception)>>activateHandler: <anUndefinedObject> 
+Error(Exception)>>handle
+Error(Exception)>>signal
+Error class(Exception class)>>signal: <'digitValue requires ...'> 
+BasicRunProgram(Object)>>error: <'digitValue requires ...'> 
+BasicRunProgram(BasicProgram)>>terminateRun: <anError> 
+[] in BasicProgram>>errorHandlerBlock
+ExceptionHandler>>evaluateResponseBlock: <aBlockClosure> for: <anError> 
+[] in ExceptionHandler>>handle:
+ProtectedFrameMarker(BlockClosure)>>setUnwind: <aBlockClosure> 
+BlockClosure>>invisibleEnsure: <aBlockClosure> 
+ExceptionHandler>>handle: <anError> 
+ExceptionHandler>>findHandler: <anError> 
+Error(Exception)>>activateHandler: <anExceptionHandler> 
+Error(Exception)>>handle
+Error(Exception)>>signal
+Error class(Exception class)>>signal: <'digitValue requires ...'> 
+Character(Object)>>error: <'digitValue requires ...'> 
+Character>>digitValue
+Float class>>fromString: <'000.²'> decimalSeparator: <'.'> 
+Float class>>fromString: <'000.²'> 
+String>>asFloat
+Number class>>fromStringOptimized: <'000.²'> 
+String>>asNumberOptimized
+[] in BasicVal class>>using:program:
+[] in BasicExpression>>makeBlockOf:
+BasicDoubleParameterContextHolder>>value
+BasicNumericContext(BasicContextWrapper)>>value
+[] in IfCommand>>block:label:
+BasicDoubleParameterContextHolder>>value
+[] in BasicRunProgram>>begin
+ExceptionHandler>>evaluateProtectedBlock: <aBlockClosure> 
+[] in ExceptionHandler>>activateDuring:
+ProtectedFrameMarker(BlockClosure)>>setUnwind: <aBlockClosure> 
+BlockClosure>>invisibleEnsure: <aBlockClosure> 
+ExceptionHandler>>activateDuring: <aBlockClosure> 
+ExceptionHandler class>>handle: <anError class> with: <aBlockClosure> during: <aBlockClosure> 
+BlockClosure>>on: <anError class> do: <aBlockClosure> 
+BasicRunProgram>>begin
+BasicRunProgram(BasicProgram)>>gotoAndIfStoppedBegin: <'[AffichageNMEA]'> 
+BasicRunProgram(BasicProgram)>>handlerName: <'[AffichageNMEA]'> evaluate: <aBlockClosure> callParameters: <anOrderedCollection> 
+BasicRunProgram>>handlerName: <'[AffichageNMEA]'> evaluate: <aBlockClosure> callParameters: <anOrderedCollection> 
+BasicRunProgram(BasicProgram)>>submitHandlerName: <'[AffichageNMEA]'> evaluate: <aBlockClosure> callParameters: <anOrderedCollection> 
+BasicRunProgram(BasicProgram)>>submitHandlerName: <'[AffichageNMEA]'> callParameters: <anOrderedCollection> 
+TimerTopPane>>wmTimer: <3716> with: <0> 
+NotificationManager>>notify: <aWinMessage> 
+NotificationManager>>notifyRecursive
+NotificationManager>>recursiveMessage
+SystemDictionary>>recursiveMessage
