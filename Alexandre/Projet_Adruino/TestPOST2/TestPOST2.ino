@@ -13,7 +13,7 @@ IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(192, 168, 1, 254);
 
 //Your Domain name with URL path or IP address with path
-const char* serverName = "http://192.168.1.60/step5V3/vent/new";
+const char* serverName = "http://192.168.1.110/step5V3/vent/new";
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
@@ -48,6 +48,12 @@ void setup(){
   Serial.println(WiFi.dnsIP(0));
   Serial.print("DNS 2: ");
   Serial.println(WiFi.dnsIP(1));
+
+    LoRa.setPins(RADIO_CS_PIN, RADIO_RST_PIN, RADIO_DI0_PIN);
+    if (!LoRa.begin(LoRa_frequency)) {
+        Serial.println("Starting LoRa failed!");
+        while (1);
+    }
 }
     
 void loop(){
@@ -59,21 +65,23 @@ void loop(){
 
         StaticJsonDocument<96> doc;
     
-        doc["capteur"] = idCapteur;
-        doc["vitesseVent"] = vitesse;
-        doc["directionVent"] = dirvent;
-        doc["temperature"] = temp;
+        doc["idCapteur"] = idCapteur;
+        doc["vitesse"] = vitesse;
+        doc["dirvent"] = dirvent;
+        doc["temp"] = temp;
         
         serializeJson(doc, output);
         
-  if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
+if(WiFi.status()== WL_CONNECTED){   //Check WiFi connection status
   
    HTTPClient http;   
+
+   Serial.println(output);
   
-   http.begin("http://jsonplaceholder.typicode.com/posts");  //Specify destination for HTTP request
+   http.begin(serverName);  //Specify destination for HTTP request
    http.addHeader("Content-Type", "text/plain");             //Specify content-type header
   
-   int httpResponseCode = http.POST("POSTING from ESP32");   //Send the actual POST request
+   int httpResponseCode = http.POST(output);   //Send the actual POST request
   
    if(httpResponseCode>0){
   
@@ -98,5 +106,4 @@ void loop(){
  }
   
   delay(10000);  //Send a request every 10 seconds
-       
-    }
+}

@@ -31,10 +31,10 @@ void loop(){
 
         StaticJsonDocument<96> doc;
     
-        doc["capteur"] = capteur;
-        doc["vitesseVent"] = vitesseVent;
-        doc["directionVent"] = directionVent;
-        doc["temperature"] = temperature;
+        doc["idCapteur"] = capteur;
+        doc["vitesse"] = vitesseVent;
+        doc["dirvent"] = directionVent;
+        doc["temp"] = temperature;
         
         serializeJson(doc, output);
 
