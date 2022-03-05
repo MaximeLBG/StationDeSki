@@ -106,8 +106,7 @@ float CV7OEMFR::getTemperature()
             {
                 if (getTypeTrame() == 2)
                 {
-                    string tmp = trame.substr(start, end - start);
-                    this->Temperature = stof(tmp);
+                    this->Temperature = stof(trame.substr(start, end - start));
                 }
 
             }
