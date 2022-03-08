@@ -1,7 +1,0 @@
-﻿  CV7OEMFR.cpp
-C:\Users\snir\Desktop\LectureTrame\CV7OEMFR.cpp(88,36): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-C:\Users\snir\Desktop\LectureTrame\CV7OEMFR.cpp(93,39): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
-C:\Users\snir\Desktop\LectureTrame\CV7OEMFR.cpp(94,43): warning C4267: '=' : conversion de 'size_t' en 'int', perte possible de données
-  main.cpp
-  Génération de code en cours...
-  LectureTrame.vcxproj -> C:\Users\snir\Desktop\LectureTrame\x64\Debug\LectureTrame.exe
