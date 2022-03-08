@@ -9,8 +9,6 @@
 
 #include "Arduino.h"
 
-class CV7OEMFR;
-
 class StringSplitter{
 	private:
 		static const unsigned int MAX = 5;
@@ -18,12 +16,10 @@ class StringSplitter{
 		int count = 0;
 		int countOccurencesOfChar(String s, char c);
 
-	public: 
+	public:
 		StringSplitter(String s, char c, unsigned int l);		
 		int getItemCount();
 		String getItemAtIndex(int index);
-
-   CV7OEMFR* laTrame;
 };
 
 #endif

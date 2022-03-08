@@ -11,72 +11,74 @@
     {
         this->trame = trame;
     }
-void CV7OEMFR::partage(StringSplitter *laTrame)
-    {
-      this->laTrame = laTrame;
-    }
 #endif
 
 int CV7OEMFR::getTypeTrame()
 {
-
-
-        if (this->trame.indexOf("$IIMWV")!= -1)
+    #ifdef PC
+        if (this->trame.find("$IIMWV") != string::npos)
         {
             return 1;
         }
-        else if (this->trame.indexOf("$WIXDR")!= -1)
+        else if (this->trame.find("$WIXDR") != string::npos)
         {
             return 2;
         }
         else
             return 0;
+    #endif
 
+    #ifdef Lorawan
+        if (this->trame.indexOf("$IIMWV")!=-1)
+        {
+            return 1;
+        }
+        else if (this->trame.indexOf("$WIXDR")!=-1)
+        {
+            return 2;
+        }
+        else
+            return 0;
+    #endif
 }
+
 float CV7OEMFR::getDirection()
 {
-  if(getTypeTrame()==1)
-  {
 #ifdef PC
-    splitString(trame);
+   splitString(trame);
 #endif
 
 #ifdef Lorawan
-   laTrame->getItemAtIndex(1);
+   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
+   String result = laTrame->getItemAtIndex(1);
+   this->Direction = result.toFloat();
 #endif
-    return this->Direction;
-  }
+   return this->Direction;
 }
 
 float CV7OEMFR::getVitesse()
 {
-  if(getTypeTrame()==1)
-  {
 #ifdef PC
-    splitString(trame);
+   splitString(trame);
 #endif
-
 #ifdef Lorawan
-   laTrame->getItemAtIndex(3);
+   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
+   String result = laTrame->getItemAtIndex(3);
+   this->Vitesse= result.toFloat();
 #endif
-  }
-
-    return this->Vitesse;
+   return this->Vitesse;
 }
 
 float CV7OEMFR::getTemperature()
 {
-  if(getTypeTrame()==2)
-  {
 #ifdef PC
-    splitString(trame);
+   splitString(trame);
 #endif
-
 #ifdef Lorawan
-   laTrame->getItemAtIndex(2);
+   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
+   String result = laTrame->getItemAtIndex(2);
+   this->Temperature = result.toFloat();
 #endif
-  }
-
    return this->Temperature;
 }
 
