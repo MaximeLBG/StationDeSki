@@ -13,7 +13,7 @@
     }
 #endif
 
-int CV7OEMFR::getTypeTrame()
+/*int CV7OEMFR::getTypeTrame()
 {
     #ifdef PC
         if (this->trame.find("$IIMWV") != string::npos)
@@ -29,58 +29,37 @@ int CV7OEMFR::getTypeTrame()
     #endif
 
     #ifdef Lorawan
-        if (this->trame.indexOf("$IIMWV")!=-1)
+        if (this->trame.indexOf("$IIMWV"))
         {
             return 1;
         }
-        else if (this->trame.indexOf("$WIXDR")!=-1)
+        else if (this->trame.indexOf("$WIXDR"))
         {
             return 2;
         }
         else
             return 0;
     #endif
-}
-
+}*/
+#ifdef PC
 float CV7OEMFR::getDirection()
 {
-#ifdef PC
-   splitString(trame);
-#endif
-
-#ifdef Lorawan
-   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
-   String result = laTrame->getItemAtIndex(1);
-   this->Direction = result.toFloat();
-#endif
-   return this->Direction;
+    splitString(trame);
+    return this->Direction;
 }
 
 float CV7OEMFR::getVitesse()
 {
-#ifdef PC
-   splitString(trame);
-#endif
-#ifdef Lorawan
-   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
-   String result = laTrame->getItemAtIndex(3);
-   this->Vitesse= result.toFloat();
-#endif
-   return this->Vitesse;
+    splitString(trame);
+    return this->Vitesse;
 }
 
 float CV7OEMFR::getTemperature()
 {
-#ifdef PC
    splitString(trame);
-#endif
-#ifdef Lorawan
-   StringSplitter* laTrame = new StringSplitter(this->trame,',',6);
-   String result = laTrame->getItemAtIndex(2);
-   this->Temperature = result.toFloat();
-#endif
    return this->Temperature;
 }
+#endif
 
 #ifdef PC
     void CV7OEMFR::splitString(string trame, string delim)

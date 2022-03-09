@@ -8,6 +8,8 @@ using namespace std;
 
 #ifdef Lorawan  // On définit une partie du programme qui fonctionnera sous Lorawan
   #include <Arduino.h>
+//#include "boards.h"
+//#include "utilities.h"
   #include "StringSplitter.h"
 #endif
   
@@ -39,8 +41,10 @@ public:
   #endif
     int getTypeTrame();             // Fonction qui renvoie "0","1" ou "2" en fonction de la trame
     
+#ifdef PC
     float getVitesse();             // Fonction qui renvoie la Vitesse (réel)
     float getTemperature();         // Fonction qui renvoie la Temperature (réel)
     float getDirection();           // Fonction qui renvoie la Direction (réel)
+#endif
 
 };

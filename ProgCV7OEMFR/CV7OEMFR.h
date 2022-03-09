@@ -1,14 +1,14 @@
-#define Lorawan    // On décide sur qu'elle système le programme doit fonctionner
+#define PC    // On décide sur qu'elle système le programme doit fonctionner
 
 #ifdef PC   // On définit une partie du programme qui fonctionnera sous PC
-  #include <string>
+  #include <string>     //On inclut la bibliothèque de string
 #endif
 
 using namespace std;
 
 #ifdef Lorawan  // On définit une partie du programme qui fonctionnera sous Lorawan
-  #include <Arduino.h>
-  #include "StringSplitter.h"
+  #include <Arduino.h>      //On inclut la bibliothèque d'Arduino
+  #include "StringSplitter.h"   //On inclut la bibliothèque StringSplitter
 #endif
   
 
@@ -37,12 +37,10 @@ public:
   #ifdef Lorawan
     CV7OEMFR(String trame = "");        // Constructeur de la classe recevant la trame sous Lorawan
   #endif
-    int getTypeTrame();      // Fonction qui renvoie "0","1" ou "2" en fonction de la trame
+    int getTypeTrame();             // Fonction qui renvoie "0","1" ou "2" en fonction de la trame
     
-#ifdef PC
     float getVitesse();             // Fonction qui renvoie la Vitesse (réel)
     float getTemperature();         // Fonction qui renvoie la Temperature (réel)
     float getDirection();           // Fonction qui renvoie la Direction (réel)
-#endif
 
 };
