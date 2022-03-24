@@ -1,0 +1,40 @@
+.paragrapheBandeau
+{
+    color: rgb(238, 238, 16);
+    text-align: center;
+    vertical-align: middle;
+    width:100%;
+}
+
+a 
+{
+    color: #000000;
+    background-color: transparent;
+}
+
+.bg-light
+{
+    background: linear-gradient(#343a40, #000000);
+}
+
+body
+{
+    font-weight:600;
+    line-height:2;
+    text-align:center;
+}
+
+.navbar-brand
+{
+    font-size:1.60rem;
+}
+
+.nav-link 
+{
+    display: block;
+    padding: 0.75rem 1.5rem;
+}
+
+
+
+
