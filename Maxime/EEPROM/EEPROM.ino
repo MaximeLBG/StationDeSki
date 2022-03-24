@@ -1,34 +1,31 @@
-#include <Preferences.h>
-Preferences preferences;
+#include <EEPROM.h>
 
-char id;
+#define EEPROM_SIZE 12
 
 void setup() 
 {
  Serial.begin(115200);
  Serial.println("Saisir un Id");
- char id;
+ EEPROM.begin(EEPROM_SIZE);
+ char id=0;
+ char readId=0;
  int boardId = 1;
-  while(Serial.available()>0)
+ 
+ //Serial.println(EEPROM.read(boardId));
+ 
+  while(Serial.available()==0)
   {
-   id = Serial.read();
-    Serial.println(id);
+    while(Serial.available()!=0)
+    {
+      Serial.println("test");
+      id = Serial.read();
+      EEPROM.write(boardId,id);
+      readId = EEPROM.read(boardId);
+      Serial.println(readId);
+    }
   }
-   preferences.putUInt("boardId", boardId);
-   preferences.putChar("id", id);
+  
 }
-void setup() 
-{
-   preferences.begin("myfile", false);
-   
-   unsigned int readBoardId = preferences.getUInt("boardId", 0); // get boardId or if key doesn't exist set variable to 0
-   Serial.print("Read Id = ");
-   Serial.println(readBoardId);
-   
-   float readId = preferences.getChar("id", 0); //
-   Serial.print("Read id = ");
-   Serial.println(readId);
-
 void loop()
 {
 }
