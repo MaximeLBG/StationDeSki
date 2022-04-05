@@ -1,5 +1,6 @@
 <?php
 ob_start();
+$title='Vous êtes déconnectés';
 ?>
 
 <h2><?=$titre?></h2>

@@ -2,7 +2,7 @@
 
 class Vent
 {
-    //définition en private de tout les champs de la table température
+    //définition en private de tout les champs de la table vent
     //qui sera créée en base de données
     private $id;             //clé primaire
     private $idCapteur;      //id du capteur
@@ -53,6 +53,7 @@ class Vent
     {
         return $this->temp;
     }
+  
 
 
     //SETTERS
@@ -84,5 +85,4 @@ class Vent
     {
         $this->temp=$temp;
     }
-
 }

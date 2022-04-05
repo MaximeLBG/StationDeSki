@@ -6,7 +6,7 @@ class ControllerVent
         if ($url=='')
             throw new Exception('Page introuvable');
 
-        //si juste 1 argument, on récupère toutes les températures
+        //si juste 1 argument, on récupère toutes les données
         else if (isset($url) && count($url)==1)
         {
             $this->VentManager=new VentManager;

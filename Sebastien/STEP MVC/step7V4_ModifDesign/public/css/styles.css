@@ -1,6 +1,21 @@
+h1,h2{
+    font-size:64px;
+    padding-bottom:1%;
+    padding-top:1%;
+    background: -webkit-linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
+    background: -moz-linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
+    background: linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
+    background-clip:text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  } 
+
+
+
 .paragrapheBandeau
 {
-    color: rgb(238, 238, 16);
+
     text-align: center;
     vertical-align: middle;
     width:100%;
@@ -8,7 +23,7 @@
 
 a 
 {
-    color: #000000;
+    color:#7D7DDB;
     background-color: transparent;
 }
 
@@ -20,7 +35,7 @@ a
 body
 {
     font-weight:600;
-    line-height:2;
+    line-height:3;
     text-align:center;
 }
 
@@ -35,6 +50,31 @@ body
     padding: 0.75rem 1.5rem;
 }
 
+.sticky-top
+{
+    color:#ffffff;
+}
+
+li.nav-item {
+    line-height:4,5;
+}
+
+button, input, optgroup, select, textarea
+{
+
+   color:white;
+   background: linear-gradient(#373c42, #181818);
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 28px;
+   margin: 4px 2px;
+   cursor: pointer;
+   
+}
 
 
 

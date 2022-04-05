@@ -1,5 +1,6 @@
 <?php
 ob_start();
+$title='Nouvel utilisateur';
 ?>
 
 <h2><?=$titre?></h2>
@@ -24,6 +25,7 @@ ob_start();
     <button class="btn btn-primary"> Valider les changements</button>
     <input type="button" class="btn btn-primary" name="Annuler" value="Annuler" onClick="window.location.href='<?=Router::makeURL("user")?>';"/>
 </form>
+<br><br><br><br><br><br>
 <?php
 $content=ob_get_clean();
 require('template.php');// on appelle la page template

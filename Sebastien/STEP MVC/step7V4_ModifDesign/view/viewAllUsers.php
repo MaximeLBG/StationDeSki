@@ -1,15 +1,18 @@
 <?php
 ob_start();
 //Affichage des données
+$title='Liste utilisateurs';
 ?>
 
 <h2><?=$titre?></h2>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
-            <tr>
-            <th scope="col">pseudo</th>
-            <th scope="col">priorite</th>
+            
+            <tr style="background-color: #6e6e6e">
+            <th scope="th-sm">Pseudo</th>
+            <th scope="th-sm">Priorité</th>
+            <th scope="th-sm">Action sur l'utilisateur</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +37,9 @@ ob_start();
         </tbody>
     </table>
 </div>
+
+<a href="http://localhost/MVC/ProjetStationDeSki/step7V4_ModifDesign/user/new"><input type="button" name="Ajouter un utilisateur "value=" Ajouter un utilisateur "/></a>
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php
 $content=ob_get_clean();

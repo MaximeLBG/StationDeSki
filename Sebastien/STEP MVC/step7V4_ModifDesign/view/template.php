@@ -14,32 +14,36 @@
         
  
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Supervision de la Station</a>
-    <p class="h5 my-0 me-md-auto fw-normal">
-    <div class="paragrapheBandeau">
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3  px-3" color:"ffffff;">Supervision de la Station</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" 
+    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand  px-3 w-100">
         <?php
-        //==========MESSAGE DE BIENVENUE POUR LES USERS CONNECTES===============
-        if(UserManager::level()>0) 
-            echo "Bonjour ".$_SESSION["connectedUser"][0];
-        ?>
-    </div>
-
-    <a class="btn btn-outline-primary"  href="<?php
-        //LIEN VERS PAGE DE DECONNEXION/CONNEXION 
-        if(UserManager::level()>0)
-            echo Router::makeURL("user/logout");
-        else
-            echo Router::makeURL("user/login");
-    ?>">
-        <?php
-            if(UserManager::level()>0)
-                echo "Déconnexion";
-                else echo "Connexion";
-        ?>
+        //======= Message de bienvenue pour les utilisateurs connectés ========
+        if (UserManager::level()>0) 
+            echo"Bonjour  ".$_SESSION["connectedUser"][0];
+            ?>
     </a>
-
-    </header>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link"href="<?php
+            //======== Lien vers la page de connexion ou de déconnexion ==========
+            if (UserManager::level()>0) 
+                echo Router::makeURL("user/logout"); 
+            else echo Router::makeURL("user/login");  
+            ?>">
+            <?php
+                if (UserManager::level()>0) 
+                    echo"Se déconnecter"; 
+                else echo"Se connecter" ;    
+            ?>
+            </a>
+        </li>
+    </ul>
+</header>
     
     <div class="container-fluid">
         <div class="row">

@@ -1,6 +1,7 @@
 <?php
 ob_start();
 //Affichage de toutes les températures
+$title='Données enregistrées';
 ?>
 
 <script type="text/javascript">
@@ -12,7 +13,7 @@ ob_start();
 <div class="table-responsive">
     <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" style="width:100%">
         <thead>
-            <tr style="background-color: #555555">
+            <tr style="background-color: #6e6e6e">
                 <th class="th-sm">Id</th>
                 <th class="th-sm">IdCapteur</th>
                 <th class="th-sm">Instant D'acquisition</th>
@@ -49,7 +50,7 @@ ob_start();
             </tr>
             </tbody>
             <tfoot>
-                <tr style="background-color: #555555">
+                <tr style="background-color: #6e6e6e">
                 
                     <th class="th-sm">Id</th>
                     <th class="th-sm">IdCapteur</th>
@@ -63,7 +64,7 @@ ob_start();
     </div>
 
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart"></canvas>
 
 <?php
 $content=ob_get_clean();

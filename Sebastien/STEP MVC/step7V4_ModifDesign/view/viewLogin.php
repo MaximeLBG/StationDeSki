@@ -1,5 +1,6 @@
 <?php
 ob_start();
+$title='Page de connexion';
 ?>
 
 <h2><?=$titre?></h2>

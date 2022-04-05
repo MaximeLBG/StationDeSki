@@ -88,4 +88,5 @@ class VentManager extends Model //extends pour la notion d'héritage en PHP
 
     }
 
+    
 }
