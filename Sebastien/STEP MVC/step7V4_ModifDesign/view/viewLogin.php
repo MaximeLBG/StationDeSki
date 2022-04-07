@@ -8,7 +8,7 @@ $title='Page de connexion';
 <div class=form-signin >
     <form action="<?=Router::makeURL("user/loginAnswer")?>" method=POST>
         
-        <br><br>
+        <br>
         <label for="input" class="visually-hidden">Identifiant</label>
         <input type="text" id="pseudo" class="form-control" name="pseudo" placeholder="Votre Identifiant" required autofocus>
         <br><br>

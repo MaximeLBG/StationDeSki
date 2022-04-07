@@ -17,7 +17,7 @@ $title='Nouvel utilisateur';
         <input class="form-control" type="text" name="pseudo" placeholder="Définir le pseudo" required>
     </div>
     <div class="form-group">
-        <input class="form-control" type="password" name="password" placeholder="Définir le mot de passe" required>
+        <input class="form-control" type="password" name="password" placeholder="Définir le mot de passe" required >
     </div>
     <div class="form-group">
         <input class="form-control" type="password" name="password_confirm" placeholder="Confirmation du mot de passe" required>
