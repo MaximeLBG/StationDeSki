@@ -9,6 +9,7 @@ void setup()
 
  String strIdModule, yesno;
  strIdModule = EEPROM.read(0);
+ char saisie;
  int result;
  
  Serial.println("L'ancien module est : " + strIdModule);
@@ -23,8 +24,9 @@ void setup()
  }
  else
  {
-  Serial.println("Saisir le nouveau module : ");
-  strIdModule = Serial.readString();
+  Serial.print("Saisir le nouveau module : ");
+  strIdModule = Serial.readStringUntil('\n'); 
+  Serial.println(strIdModule);
   
   result = strIdModule.toInt();  //converti un string en char
   
