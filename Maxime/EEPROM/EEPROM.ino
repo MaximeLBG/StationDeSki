@@ -14,7 +14,7 @@ void setup()
  Serial.println("L'ancien module est : " + strIdModule);
  Serial.println("Voulez-vous saisir un nouveau module ? (y/n)");
  
- Serial.setTimeout(5000);
+ Serial.setTimeout(30000);
  yesno = Serial.readStringUntil('\n');
  
  if(yesno == "n" || yesno == 0)

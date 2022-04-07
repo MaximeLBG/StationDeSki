@@ -51,12 +51,9 @@ void loop()
       }
         if (Vit == true && Temp == true)      // Quand les deux sont true, sauvegarde les résultats
       {
-          Serial.print("La direction est de : ");
-          Serial.println(dirvent);
-          Serial.print("La vitesse est de : ");
-          Serial.println(vitesse);
-          Serial.print("la température est de : ");
-          Serial.println(temp);
+          Serial.print("La direction est de : ");Serial.println(dirvent);
+          Serial.print("La vitesse est de : "); Serial.println(vitesse);
+          Serial.print("la température est de : "); Serial.println(temp);
           Vit = false; Temp = false;        // temp et dirVit passe à false et recommance dans la boucle
       }
 }
