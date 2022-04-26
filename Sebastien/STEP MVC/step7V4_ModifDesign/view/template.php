@@ -82,8 +82,8 @@
                     
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                        <span data-feather="A propos"></span>
+                        <a class="nav-link" href=<?=Router::makeURL("À_propos")?>>
+                        <span data-feather="À propos"></span>
                         À propos
                         </a>
                     </li> 

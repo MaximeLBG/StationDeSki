@@ -6,7 +6,7 @@ $title='Liste utilisateurs';
 
 <h2><?=$titre?></h2>
 <div class="table-responsive">
-    <table class="table table-striped table-sm">
+    <table class="tabview">
         <thead>
             
             <tr style="background-color: #6e6e6e">
@@ -36,9 +36,10 @@ $title='Liste utilisateurs';
         
         </tbody>
     </table>
+    <br>
 </div>
 
-<a href="http://localhost/MVC/ProjetStationDeSki/step7V4_ModifDesign/user/new"><input type="button" name="Ajouter un utilisateur "value=" Ajouter un utilisateur "/></a>
+<a href="http://localhost/MVC/ProjetStationDeSki/step7V4_ModifDesign/user/new"><input type="button" name="Ajouter un utilisateur "value="   Ajouter un utilisateur   "/></a>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php

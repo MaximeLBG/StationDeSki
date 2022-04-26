@@ -11,6 +11,7 @@ class ControllerVent
         {
             $this->VentManager=new VentManager;
             $data=$this->VentManager->getAllVent();
+            //var_dump($data);die();
             $title="vents mesurés";
             require_once 'view/viewAllVent.php';
         }
@@ -34,7 +35,7 @@ class ControllerVent
 
             //var_dump($data);die();
             $lesDates=$this->VentManager->getDate($url[1]);
-            $lesMesures=$this->VentManager->getValues($url[1]);
+            $lesMesures=$this->VentManager->getValues($url[1]); 
             require_once 'view/viewAllVent.php';
         }    
         else

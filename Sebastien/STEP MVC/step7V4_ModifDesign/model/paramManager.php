@@ -6,26 +6,11 @@ class paramManager extends Model
         $this->setBdd('db_capteur');
     }
 
-    public function getVmax($idCapteur)
+    public function clearAlarmes()
     {
-        $var=[];
-        $var=$this->GetPartial("tb_capteur_vent","Vent","idCapteur=".$idCapteur);
-        $varVmax=$this->GetPartial("param_capteur","Vent","idCapteur=".$Vmax);
-        
-        //var_dump($var);die();
-        if($var>$varVmax)
-            return $var;
-        else
-            exit;
-    }   
-
-
-
-
-
-
-
-
-
-
+        $sql="UPDATE tb_capteur_vent SET SeuilDepasse=2 WHERE SeuilDepasse=1";
+        $req=$this->getBdd()->query($sql);
+        $req->execute();
+        return;
+    }
 }

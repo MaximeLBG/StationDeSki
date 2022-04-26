@@ -2,16 +2,14 @@ h1,h2{
     font-size:64px;
     padding-bottom:1%;
     padding-top:1%;
-    background: -webkit-linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
-    background: -moz-linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
-    background: linear-gradient(to right, #1613bd 0%, #d915b5 50%,#ea7ea2 100%);
+    background: -webkit-linear-gradient(to right, #1613bd 0%, #0c4597 50%,#0b95f7 100%);
+    background: -moz-linear-gradient(to right, #1613bd 0%, #0c4597 50%,#0b95f7 100%);
+    background: linear-gradient(to right, #1613bd 0%, #0c4597 50%,#0b95f7 100%);
     background-clip:text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
   } 
-
-
 
 .paragrapheBandeau
 {
@@ -23,8 +21,16 @@ h1,h2{
 
 a 
 {
-    color:#7D7DDB;
+    color:#1b70c7;
     background-color: transparent;
+}
+a:active {
+    background: #265301;
+    color: #319f49;
+}
+a:focus {
+    border-bottom: 1px solid;
+    background: #BAE498;
 }
 
 .bg-light
@@ -59,22 +65,65 @@ li.nav-item {
     line-height:4,5;
 }
 
-button, input, optgroup, select, textarea
+input,button
 {
-
-   color:white;
-   background: linear-gradient(#373c42, #181818);
+   background: linear-gradient(#394048, #a91b23);
    border: none;
-   color: white;
-   padding: 15px 32px;
+   color:white;
+   border-radius:10px;
    text-align: center;
    text-decoration: none;
    display: inline-block;
-   font-size: 28px;
-   margin: 4px 2px;
-   cursor: pointer;
-   
 }
 
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+ 
+    background-clip: padding-box;
+    border: 2px solid #435c35;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
+::placeholder{
+    color:white;
+}
 
+.table-bordered td, .table-bordered th {
+    border: 1px solid #000000;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.tabview{
+    border:solid 2px #724b4b; 
+    background-color:rgb(230, 228, 228);
+    font-weight:600;
+    line-height:3;
+    text-align:center; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:18px;
+    margin:auto;
+    table-layout: auto;
+    width: 100%;
+    
+    
+}
+
+td,th{
+    border: thin solid #000000;
+    border-collapse:separate; 
+    font-weight:600;
+    line-height:3;
+    text-align:center;
+    color :#000000;
+}

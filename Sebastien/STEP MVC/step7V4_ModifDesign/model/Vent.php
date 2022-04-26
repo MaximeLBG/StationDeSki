@@ -10,6 +10,7 @@ class Vent
     private $vitesse;          //Valeur vitesse vent 
     private $dirvent;        //Direction du vent
     private $temp;           //Température
+    private $SeuilDepasse;  //Valeur par défaut à 25 (seuil de VMAX)
 
     public function __construct(array $data)
     {
@@ -53,6 +54,10 @@ class Vent
     {
         return $this->temp;
     }
+    public function getSeuilDepasse()
+    {
+        return $this->SeuilDepasse;
+    }
   
 
 
@@ -84,5 +89,9 @@ class Vent
     public function setTemp($temp)
     {
         $this->temp=$temp;
+    }
+    public function setSeuilDepasse($SeuilDepasse)
+    {
+        $this->SeuilDepasse=$SeuilDepasse;
     }
 }
