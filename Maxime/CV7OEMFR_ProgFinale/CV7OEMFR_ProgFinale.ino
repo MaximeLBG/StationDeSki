@@ -17,7 +17,7 @@ const char* appKey = "94C03928078D7455DD4B7618AFC6C816"; // Chaneg to TTN Applic
 
 int i = 0;
 String static strIdModule;
-bool Temp = false, Vit = false;
+bool one = false, two = false;
 
 TTN_esp32 ttn ;
 TTN_CayenneLPP lpp;
@@ -61,7 +61,7 @@ void setup()
     Serial.println("L'ancien module est : " + strIdModule);
     Serial.println("Voulez-vous saisir un nouveau module ? (y/n)");
      
-    Serial.setTimeout(30000);
+    Serial.setTimeout(10000);
     yesno = Serial.readStringUntil('\n');
      
     if(yesno == "n" || yesno == 0)
@@ -85,43 +85,43 @@ void loop()
 {
     String value=Serial2.readStringUntil('\n');
     //Serial.print(value);
-    float temp, dirvent, vitesse;
+    float temp, dir, speeds;
 
-    CV7OEMFR* trame;  //Déclaration d'un pointeur dans la classe CV7OEMFR
-    trame = new CV7OEMFR(value);    //Une fois sur deux la trame va prendre soit la valeur du paramètre 1 soit du paramètre 2
+    CV7OEMFR* frame;  //Déclaration d'un pointeur dans la classe CV7OEMFR
+    frame = new CV7OEMFR(value);    //Une fois sur deux la trame va prendre soit la valeur du paramètre 1 soit du paramètre 2
 
-      if (trame->getTypeTrame() == 1)        //On appelle la fonction getTypeTrame() pour savoir si la trame est de format "$IIMWV" ou "$WIXDR"
+      if (frame->getFrameType() == 1)        //On appelle la fonction getTypeTrame() pour savoir si la trame est de format "$IIMWV" ou "$WIXDR"
       {
-          dirvent = trame->getDirection();      // On sauvegarde les valeurs de getDirection() et getVitesse() dans les variables attendues
-          vitesse = trame->getVitesse();
-          Vit = true;       //dirVit passe à true quand la trame est de format "$IIMWV"
+          dir = frame->getDirection();      // On sauvegarde les valeurs de getDirection() et getVitesse() dans les variables attendues
+          speeds = frame->getSpeed();
+          two = true;       //dirVit passe à true quand la trame est de format "$IIMWV"
       }
-      if (trame->getTypeTrame() == 2)       //On appelle la fonction getTypeTrame() pour savoir si la trame est de format "$IIMWV" ou "$WIXDR"
+      if (frame->getFrameType() == 2)       //On appelle la fonction getTypeTrame() pour savoir si la trame est de format "$IIMWV" ou "$WIXDR"
       {  
-          temp = trame->getTemperature();       //On sauvegarde les valeurs de getTemperature() dans la variables attendue
-          Temp = true;      //temp passe à true quand la trame est de format "$IWXDR
+          temp = frame->getTemperature();       //On sauvegarde les valeurs de getTemperature() dans la variables attendue
+          one = true;      //temp passe à true quand la trame est de format "$IWXDR
       }
-        if (Vit == true && Temp == true)      // Quand les deux sont true, sauvegarde les résultats
+        if (two == true && one == true)      // Quand les deux sont true, sauvegarde les résultats
       {
           lpp.reset();
           lpp.addTemperature(1, temp);
-          lpp.addAnalogInput(2, dirvent);
-          lpp.addAnalogInput(3, vitesse);
+          lpp.addAnalogInput(2, dir);
+          lpp.addAnalogInput(3, speeds);
           lpp.addDigitalInput(4, strIdModule.toInt());
           
           
-          Vit = false; Temp = false;        // temp et dirVit passe à false et recommance dans la boucle
+          two = false; one = false;        // temp et dirVit passe à false et recommance dans la boucle
       }
     
     if (ttn.sendBytes(lpp.getBuffer(), lpp.getSize()))
     {
-        Serial.printf("Temp: %f TTN_CayenneLPP: %d %x %02X%02X\n", temp, lpp.getBuffer()[0], lpp.getBuffer()[1],
+        Serial.printf("\nTemp: %f TTN_CayenneLPP: %d %x %02X%02X\n", temp, lpp.getBuffer()[0], lpp.getBuffer()[1],
             lpp.getBuffer()[2], lpp.getBuffer()[3]);
 
-        Serial.printf("Direction: %f TTN_CayenneLPP: %d %x %02X%02X\n", dirvent, lpp.getBuffer()[0], lpp.getBuffer()[1],
+        Serial.printf("Direction: %f TTN_CayenneLPP: %d %x %02X%02X\n", dir, lpp.getBuffer()[0], lpp.getBuffer()[1],
             lpp.getBuffer()[2], lpp.getBuffer()[3]);
 
-        Serial.printf("Vitesse: %f TTN_CayenneLPP: %d %x %02X%02X\n", vitesse, lpp.getBuffer()[0], lpp.getBuffer()[1],
+        Serial.printf("Speed: %f TTN_CayenneLPP: %d %x %02X%02X\n", speeds, lpp.getBuffer()[0], lpp.getBuffer()[1],
             lpp.getBuffer()[2], lpp.getBuffer()[3]);
 
         Serial.printf("Capteur: %i TTN_CayenneLPP: %d %x %02X%02X\n", strIdModule.toInt(), lpp.getBuffer()[0], lpp.getBuffer()[1],

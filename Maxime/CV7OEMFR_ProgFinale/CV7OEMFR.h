@@ -1,46 +1,46 @@
-#define Lorawan    // On décide sur qu'elle système le programme doit fonctionner
+#define Lorawan    //We decide on which system the program should run
 
-#ifdef PC   // On définit une partie du programme qui fonctionnera sous PC
-  #include <string>     //On inclut la bibliothèque de string
+#ifdef PC   //We define a part of the program that will work on PC
+  #include <string>     //We include the string library
 #endif
 
 using namespace std;
 
-#ifdef Lorawan  // On définit une partie du programme qui fonctionnera sous Lorawan
-  #include <Arduino.h>      //On inclut la bibliothèque d'Arduino
-  #include "StringSplitter.h"   //On inclut la bibliothèque StringSplitter
+#ifdef Lorawan  //We define a part of the program that will work under Lorawan
+  #include <Arduino.h>      //We include the Arduino library
+  #include "StringSplitter.h"   //We include the StringSplitter library
 #endif
   
 
-class CV7OEMFR                  // Classe de l'anémomètre Ultrasonore
+class CV7OEMFR                  //Ultrasonic Anemometer Class
 {
 private:
 
-    float Vitesse, Temperature, Direction;    // Variables ou ira le resultat demandé
-    int typeTrame;                // Variables du type de la trame ("0","1" ou "2")
+    float speed, temperature, direction;    //Variables where the requested result will go
+    int frameType;                //Frame type variables("0", "1" or "2")
 
   #ifdef PC
-    string trame;               // Trame récupérée sous PC
-    void splitString(string trame, string delim = ",");   // Fonction permettant de séparrer la trame à chaque "," rencontrée sous PC
+    string frame;               //Frame retrieved on PC
+    void splitString(string frame, string delim = ",");   //Function to separate the frame at each "," encountered on PC
   #endif
 
   #ifdef Lorawan
-    String trame;               // Trame récupérée sous Lorawan
+    String frame;               //Frame retrieved under Lorawan
   #endif
 
 public:
 
   #ifdef PC
-    CV7OEMFR(string trame = "");        // Constructeur de la classe recevant la trame sous PC
+    CV7OEMFR(string frame = "");        //Constructor of the class receiving the frame under PC
   #endif
 
   #ifdef Lorawan
-    CV7OEMFR(String trame = "");        // Constructeur de la classe recevant la trame sous Lorawan
+    CV7OEMFR(String frame = "");        //Constructor of the class receiving the frame under Lorawan
   #endif
-    int getTypeTrame();             // Fonction qui renvoie "0","1" ou "2" en fonction de la trame
+    int getFrameType();             // Function that returns "0", "1" or "2" depending on the frame
     
-    float getVitesse();             // Fonction qui renvoie la Vitesse (réel)
-    float getTemperature();         // Fonction qui renvoie la Temperature (réel)
-    float getDirection();           // Fonction qui renvoie la Direction (réel)
+    float getSpeed();             // Function that returns Speed ​​(real)
+    float getTemperature();         // Function that returns Temperature ​​(real)
+    float getDirection();           // Function that returns Direction ​​(real)
 
 };
